@@ -1,0 +1,28 @@
+<Map>:
+    lat:23.68
+    lon:90.35
+    zoom:10
+    GpsBlinker:
+
+        source:"transparent.png"
+        id:blinker
+        default_blink_size:25
+        blink_size:25
+        outer_opacity: 1
+
+        canvas.before:
+
+            Color:
+                rgba: app.theme_cls.primary_color[:3] + [self.outer_opacity]
+            RoundedRectangle:
+                radius: [self.blink_size/2.0, ]
+                size: [self.blink_size, self.blink_size]
+                pos: self.pos[0] + self.size[0]/2.0 - self.blink_size/2.0, self.pos[1] + self.size[1]/2.0 - self.blink_size/2.0
+
+            Color:
+                rgba: app.theme_cls.primary_color
+            RoundedRectangle:
+                radius: [self.default_blink_size/2.0, ]
+                size: [self.default_blink_size, self.default_blink_size]
+                pos: [self.pos[0] + self.size[0]/2.0 - self.default_blink_size/2.0, self.pos[1] + self.size[1]/2.0 - self.default_blink_size/2.0]
+
